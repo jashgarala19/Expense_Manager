@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Expense Manager</string>
+    <string name="expenses">Expenses</string>
+
+    <string name="stats">Stats</string>
+    <string name="settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="Settings">Settings</string>
+    <string name="calendar">Calendar</string>
+    <string name="income_text">Income</string>
+    <string name="expense_text">Expense</string>
+    <string name="total_text">Total</string>
+    <string name="income_value">₹ 0.00</string>
+    <string name="expense_value">₹ 0.00</string>
+    <string name="total_value">₹ 0.00</string>
+    <string name="no_transaction_found">No data available</string>
+    <string name="date">Date</string>
+
+    <string name="food">Food</string>
+    <string name="clothing">Clothing</string>
+    <string name="travel">Travel</string>
+    <string name="rent">Rent</string>
+    <string name="education">Education</string>
+    <string name="grocery">Grocery</string>
+    <string name="medical">Medical</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="Business">Business</string>
+    <string name="Shopping">Shopping</string>
+    <string name="transport">Transport</string>
+    <string name="Home">Home</string>
+    <string name="Car">Car</string>
+    <string name="family">Family&amp;Personal</string>
+    <string name="Gift">Gift</string>
+    <string name="health_care">HealthCare</string>
+    <string name="other">Other</string>
+    <string name="loan">Loan</string>
+    <string name="Insuarance">Insuarance</string>
+    <string name="Rent">Rent</string>
+    <string name="salary">Salary</string>
+
+    <string-array name="spinner1">
+        <item >Food</item>
+        <item>Clothing</item>
+        <item >Travel</item>
+        <item >Rent</item>
+        <item>Education</item>
+        <item >Grocery</item>
+        <item    >Medical</item>
+        <item >Entertainment</item>
+        <item>Business</item>
+        <item    >Shopping</item>
+        <item>Transport</item>
+        <item>Home</item>
+        <item >Car</item>
+        <item >Family&amp;Personal</item>
+        <item>Gift</item>
+        <item >HealthCare</item>
+        <item >Other</item>
+
+    </string-array>
+
+    <string-array name="spinner2">
+        <item >Loan</item>
+        <item >Insuarance</item>
+        <item>Rent</item>
+        <item>Salary</item>
+        <item >Other</item>
+
+    </string-array>
+</resources>

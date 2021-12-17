@@ -1,0 +1,478 @@
+package com.jashcodes.expense_manager_test
+
+
+import android.annotation.SuppressLint
+import android.app.DatePickerDialog
+import android.content.Context
+import android.graphics.Color
+import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_add_transaction.*
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.Calendar
+
+
+class Add_Transaction : AppCompatActivity()  {
+
+    private lateinit var tvDatePicker : TextView
+    lateinit var weekDay:String
+
+    var income_button_pressed=0
+    var expense_button_pressed=1
+
+
+
+
+    @SuppressLint("ResourceType")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_add_transaction)
+        setTitle("Add Transaction")
+
+
+
+        tvDatePicker = findViewById(R.id.tv_date)
+
+
+
+        val myCalendar = Calendar.getInstance()
+
+
+        val dayy=myCalendar.get(Calendar.DAY_OF_MONTH)
+        val  yearr=myCalendar.get(Calendar.YEAR)
+
+        val monthh = myCalendar.get(Calendar.MONTH)
+        val dayy_of_week = myCalendar.get(Calendar.DAY_OF_WEEK)
+
+        if(Calendar.MONDAY == dayy_of_week)
+        {
+            weekDay="Mon"
+        }
+        else if(Calendar.TUESDAY == dayy_of_week)
+        {
+            weekDay="Tue"
+        }
+        else if(Calendar.WEDNESDAY == dayy_of_week)
+        {
+            weekDay="Wed"
+        }
+        else if(Calendar.THURSDAY == dayy_of_week)
+        {
+            weekDay="Thu"
+        }
+        else if(Calendar.FRIDAY == dayy_of_week)
+        {
+            weekDay="Fri"
+        }
+        else if(Calendar.SATURDAY == dayy_of_week)
+        {
+            weekDay="Sat"
+        }
+        else
+        {
+            weekDay="Sun"
+        }
+tvDatePicker.text=("$dayy/$monthh/$yearr ($weekDay)")
+
+
+
+        val datePicker = DatePickerDialog.OnDateSetListener{
+            view,year,month,dayofMonth->
+
+            myCalendar.set(Calendar.YEAR,year)
+            myCalendar.set(Calendar.MONTH,month)
+            myCalendar.set(Calendar.DAY_OF_MONTH,dayofMonth)
+
+            val dayofWeek = myCalendar.get(Calendar.DAY_OF_WEEK)
+            if(Calendar.MONDAY == dayofWeek)
+            {
+                weekDay="Mon"
+            }
+            else if(Calendar.TUESDAY == dayofWeek)
+            {
+                weekDay="Tue"
+            }
+            else if(Calendar.WEDNESDAY == dayofWeek)
+            {
+                weekDay="Wed"
+            }
+            else if(Calendar.THURSDAY == dayofWeek)
+            {
+                weekDay="Thu"
+            }
+            else if(Calendar.FRIDAY == dayofWeek)
+            {
+                weekDay="Fri"
+            }
+            else if(Calendar.SATURDAY == dayofWeek)
+            {
+                weekDay="Sat"
+            }
+            else
+            {
+                weekDay="Sun"
+            }
+
+
+
+
+            updateLable(myCalendar)
+
+        }
+
+
+
+        tv_date.setOnClickListener{
+            DatePickerDialog(this,datePicker,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),
+            myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+
+
+//income_button.setOnClickListener{
+//
+//
+//    expense_button.setTextColor(Color.parseColor("#C5C1C1"))
+//    expense_button.setBackgroundColor(Color.parseColor("#141417"))
+//
+//    income_button.setTextColor(Color.parseColor("#1A1C20"))
+//    income_button.setBackgroundColor(Color.parseColor("#558EFF"))
+//
+//
+//
+//    var edittextint_1: Drawable? = account_type_edittext.getBackground()
+//    edittextint_1 = DrawableCompat.wrap(edittextint_1!!)
+//    //the color is a direct color int and not a color resource
+//    //the color is a direct color int and not a color resource
+//    DrawableCompat.setTint(edittextint_1, Color.parseColor("#558EFF"))
+//    account_type_edittext.setBackground(edittextint_1)
+//
+//
+//
+//    var edittextint_3: Drawable? = category_type_edittext.getBackground()
+//    edittextint_3 = DrawableCompat.wrap(edittextint_3!!)
+//    //the color is a direct color int and not a color resource
+//    //the color is a direct color int and not a color resource
+//    DrawableCompat.setTint(edittextint_3, Color.parseColor("#558EFF"))
+//    category_type_edittext.setBackground(edittextint_3)
+//
+//
+//
+//
+//    income_button_pressed=1
+//    expense_button_pressed=0
+//
+//    if(category_type_pressed1==1)
+//    {
+//        val Category_type_income_Fragment = Category_type_income_Fragment()
+//        supportFragmentManager.beginTransaction().replace(R.id.my_container,Category_type_income_Fragment).commit()
+//
+//    }
+//
+//
+//
+//}
+//
+
+//
+//
+//
+//
+//
+//        account_type_edittext.setOnClickListener{
+//
+//
+//            category_type_pressed1=0
+//            categoty_type_pressed2=0
+//         account_type_pressed = 1
+//
+//
+//            val Account_type_Fragment = Account_type_Fragment()
+//            supportFragmentManager.beginTransaction().replace(R.id.my_container,Account_type_Fragment).commit()
+//
+//
+//        }
+//
+//        category_type_edittext.setOnClickListener{
+//            account_type_pressed = 0
+//
+//            if(expense_button_pressed==1)
+//            {
+//                category_type_pressed1=1
+//                val Category_type_Fragment = Category_type_Fragment()
+//                supportFragmentManager.beginTransaction().replace(R.id.my_container,Category_type_Fragment).commit()
+//            }
+//            else if(income_button_pressed==1)
+//            {
+//                categoty_type_pressed2=1
+//            val Category_type_income_Fragment = Category_type_income_Fragment()
+//                supportFragmentManager.beginTransaction().replace(R.id.my_container,Category_type_income_Fragment).commit()
+//
+//            }
+//
+//
+//
+//
+//        }
+//
+//
+//        amount_edittext.setOnClickListener{
+//
+//
+//
+//            if(account_type_pressed==1)
+//            {
+//                var fragment = supportFragmentManager.findFragmentById(R.id.my_container) as  Account_type_Fragment
+//
+//                fragment.my_fun()
+//
+//            }
+//
+//            if(category_type_pressed1==1)
+//            {
+//                var fragment = supportFragmentManager.findFragmentById(R.id.my_container) as  Category_type_Fragment
+//
+//                fragment.my_fun()
+//
+//            }
+//
+//            if(categoty_type_pressed2==1)
+//            {
+//                var fragment = supportFragmentManager.findFragmentById(R.id.my_container) as  Category_type_income_Fragment
+//
+//                fragment.my_fun()
+//            }
+//
+//
+//
+//
+//
+//        }
+
+
+        val items = resources.getStringArray(R.array.spinner1)
+
+
+        val arrayAdapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_dropdown_item, items
+
+        )
+      spinner.adapter=arrayAdapter
+        spinner.onItemSelectedListener =object :
+        AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+
+        }
+
+
+        income_button.setOnClickListener{
+
+            income_button_pressed=1
+            expense_button_pressed=0
+
+
+            val items = resources.getStringArray(R.array.spinner2)
+
+
+            val arrayAdapter = ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item, items
+
+            )
+            spinner.adapter=arrayAdapter
+            spinner.onItemSelectedListener =object :
+                AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                }
+
+
+            }
+            //
+
+    expense_button.setTextColor(Color.parseColor("#C5C1C1"))
+    expense_button.setBackgroundColor(Color.parseColor("#141417"))
+
+    income_button.setTextColor(Color.parseColor("#1A1C20"))
+    income_button.setBackgroundColor(Color.parseColor("#558EFF"))
+//
+//
+//
+//    var edittextint_1: Drawable? = account_type_edittext.getBackground()
+//    edittextint_1 = DrawableCompat.wrap(edittextint_1!!)
+//    //the color is a direct color int and not a color resource
+//    //the color is a direct color int and not a color resource
+//    DrawableCompat.setTint(edittextint_1, Color.parseColor("#558EFF"))
+//    account_type_edittext.setBackground(edittextint_1)
+//
+//
+//
+//    var edittextint_3: Drawable? = category_type_edittext.getBackground()
+//    edittextint_3 = DrawableCompat.wrap(edittextint_3!!)
+//    //the color is a direct color int and not a color resource
+//    //the color is a direct color int and not a color resource
+//    DrawableCompat.setTint(edittextint_3, Color.parseColor("#558EFF"))
+//    category_type_edittext.setBackground(edittextint_3)
+//
+//
+//
+//
+//    income_button_pressed=1
+//    expense_button_pressed=0
+//
+//    if(category_type_pressed1==1)
+//    {
+//        val Category_type_income_Fragment = Category_type_income_Fragment()
+//        supportFragmentManager.beginTransaction().replace(R.id.my_container,Category_type_income_Fragment).commit()
+//
+//    }
+//
+
+//
+//        account_type_edittext.setOnClickListener{
+//
+//
+//            category_type_pressed1=0
+//            categoty_type_pressed2=0
+//         account_type_pressed = 1
+//
+//
+//            val Account_type_Fragment = Account_type_Fragment()
+//            supportFragmentManager.beginTransaction().replace(R.id.my_container,Account_type_Fragment).commit()
+//
+//
+//
+        }
+        expense_button.setOnClickListener{
+
+            expense_button.setTextColor(Color.parseColor("#1A1C20"))
+            expense_button.setBackgroundColor(Color.parseColor("#FD6255"))
+
+            income_button.setTextColor(Color.parseColor("#C5C1C1"))
+            income_button.setBackgroundColor(Color.parseColor("#141417"))
+
+
+
+            val items = resources.getStringArray(R.array.spinner1)
+
+
+            val arrayAdapter = ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item, items
+
+            )
+            spinner.adapter=arrayAdapter
+            spinner.onItemSelectedListener =object :
+                AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                }
+
+
+            }
+
+//            var edittextint_2: Drawable? = account_type_edittext.getBackground()
+//            edittextint_2 = DrawableCompat.wrap(edittextint_2!!)
+//            //the color is a direct color int and not a color resource
+//            //the color is a direct color int and not a color resource
+//            DrawableCompat.setTint(edittextint_2, Color.parseColor("#FD6255"))
+//            account_type_edittext.setBackground(edittextint_2)
+//
+//            var edittextint_4: Drawable? = category_type_edittext.getBackground()
+//            edittextint_4 = DrawableCompat.wrap(edittextint_4!!)
+//            //the color is a direct color int and not a color resource
+//            //the color is a direct color int and not a color resource
+//            DrawableCompat.setTint(edittextint_4, Color.parseColor("#FD6255"))
+//            category_type_edittext.setBackground(edittextint_4)
+            expense_button_pressed=1
+            income_button_pressed=0
+
+
+//if(categoty_type_pressed2==1)
+//{
+//    val Category_type_Fragment = Category_type_Fragment()
+//    supportFragmentManager.beginTransaction().replace(R.id.my_container,Category_type_Fragment).commit()
+//}
+
+
+
+
+
+        }
+
+
+
+    }
+
+
+
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        currentFocus?.let {
+            val imm: InputMethodManager = getSystemService(
+                Context.INPUT_METHOD_SERVICE
+            ) as (InputMethodManager)
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
+
+
+    private fun updateLable(myCalendar: Calendar) {
+
+        val myFormat ="dd/MM/yyyy"
+        val sdf = SimpleDateFormat(myFormat, Locale.ENGLISH)
+
+//
+        tvDatePicker.text=(sdf.format(myCalendar.time)+" ("+weekDay+")")
+
+
+    }
+
+
+
+
+//    public fun setaccounttype(acc_type:String)
+//    {
+//
+//        account_type_edittext.setText(acc_type)
+//    }
+//
+//    public fun cancelpressed(a:Int)
+//    {
+//
+//        account_type_pressed=a
+//        category_type_pressed1=a
+//        categoty_type_pressed2=a
+//    }
+//
+//
+//    public fun setcategorytype(c:String)
+//    {
+//        category_type_edittext.setText(c)
+//    }
+}

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    android:layout_height="300dp"
+    android:layout_gravity="bottom"
+    android:background="#0B0C0E"
+    tools:context=".Category_type_income_Fragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/cancel_button"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_round_cancel_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.061" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Category"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="224dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.6">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:textAlignment="textEnd">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd">
+
+                    <Button
+                        android:id="@+id/category_18"
+                        android:layout_width="167dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|clip_vertical"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="#414149"
+                        android:text="@string/Business"
+                        android:textAllCaps="false"
+                        android:textColor="#C5C1C1"
+                        app:rippleColor="@color/button_stroke_color" />
+
+                    <Button
+                        android:id="@+id/category_19"
+                        android:layout_width="167dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|clip_vertical"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="#414149"
+                        android:text="@string/loan"
+                        android:textAllCaps="false"
+                        android:textColor="#C5C1C1"
+                        app:rippleColor="@color/button_stroke_color" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd">
+
+                    <Button
+                        android:id="@+id/category_20"
+                        android:layout_width="167dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|clip_vertical"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="#414149"
+                        android:text="@string/Insuarance"
+                        android:textAllCaps="false"
+                        android:textColor="#C5C1C1"
+                        app:rippleColor="@color/button_stroke_color" />
+
+                    <Button
+                        android:id="@+id/category_21"
+                        android:layout_width="167dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|clip_vertical"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="#414149"
+                        android:text="@string/rent"
+                        android:textAllCaps="false"
+                        android:textColor="#C5C1C1"
+                        app:rippleColor="@color/button_stroke_color" />
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd">
+
+                    <Button
+                        android:id="@+id/category_22"
+                        android:layout_width="167dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|clip_vertical"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="#414149"
+                        android:text="@string/salary"
+                        android:textAllCaps="false"
+                        android:textColor="#C5C1C1"
+                        app:rippleColor="@color/button_stroke_color" />
+
+                    <Button
+                        android:id="@+id/category_23"
+                        android:layout_width="167dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center|clip_vertical"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="#414149"
+                        android:text="@string/Gift"
+                        android:textAllCaps="false"
+                        android:textColor="#C5C1C1"
+                        app:rippleColor="@color/button_stroke_color" />
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/category_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|clip_vertical"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="#414149"
+                    android:text="@string/other"
+                    android:textAllCaps="false"
+                    android:textColor="#C5C1C1"
+                    app:rippleColor="@color/button_stroke_color" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
